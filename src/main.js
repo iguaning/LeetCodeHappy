@@ -11,6 +11,8 @@ import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
+import 'default-passive-events'
+
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
 const app = createApp(App)

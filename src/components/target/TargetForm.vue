@@ -39,12 +39,12 @@
 </template>
 
 <script setup>
+import { reactive } from 'vue'
 import { UserService } from '@/api/apis'
-import {reactive} from "vue";
 
 const submitTarget = () => {
   submitTargetInfo()
-  console.log(formLabelAlign.value, formLabelAlign.leetcode, formLabelAlign.num, formLabelAlign.datepicker)
+  // console.log(formLabelAlign.value, formLabelAlign.leetcode, formLabelAlign.num, formLabelAlign.datepicker)
 }
 
 const submitTargetInfo = () => {
