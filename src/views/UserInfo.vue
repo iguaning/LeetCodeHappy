@@ -1,7 +1,7 @@
 <template>
-  <user-binding></user-binding>
+  <bind-form></bind-form>
 </template>
 
 <script setup>
-import UserBinding from '@/components/user/BingForm.vue'
+import BindForm from '@/components/user/BindForm.vue'
 </script>

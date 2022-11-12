@@ -6,15 +6,15 @@
       style="max-width: 460px"
   >
     <el-form-item label="LeetCode账号">
-      <el-input v-model="formLabelAlign.leetcode" clearable :placeholder="formLabelAlign.leetcode"/>
+      <el-input v-model="formLabelAlign.leetcode" />
     </el-form-item>
     <el-form-item label="Github账号">
-      <el-input v-model="formLabelAlign.github" clearable :placeholder="formLabelAlign.github">
+      <el-input v-model="formLabelAlign.github">
         <template #prepend>Https://github.com/</template>
       </el-input>
     </el-form-item>
     <el-form-item label="邮箱账号">
-      <el-input type="email" v-model="formLabelAlign.email" clearable :placeholder="formLabelAlign.email"/>
+      <el-input type="email" v-model="formLabelAlign.email" />
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="submitBinding">提交绑定</el-button>
@@ -49,24 +49,12 @@ const submitUserInfo = () => {
   }
 
   UserService.submitUserInfo(userParams).then((res) => {
-    // console.log(res.data)
+    console.log(res.data)
     if (res.data[0] === 0) {
-      alert("添加成功!!!");
+      alert("添加成功!")
     } else {
-      alert(res.data[1]);
+      alert(res.data[1])
     }
   })
 }
 </script>
-
-<style scoped>
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.box-card {
-  width: 480px;
-}
-</style>

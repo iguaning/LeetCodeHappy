@@ -1,5 +1,5 @@
 <template>
-  <el-table :data="targetTableData" border style="width: 100%">
+  <el-table :data="targetTableData" border style="width: 100%" v-loading="loading">
     <el-table-column prop="user" label="用户" width="180" fixed>
       <template #default="scope">
         <el-link type="primary" :underline="false" :href="'https://leetcode.cn/u/' + scope.row.user" target="_blank">{{ scope.row.user }}</el-link>
@@ -23,8 +23,11 @@
 </template>
 
 <script setup>
-import { onMounted, reactive } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
 import { UserService } from '@/api/apis'
+
+let targetTableData = reactive([])
+const loading = ref(true)
 
 const getTargetInfo = () => {
   const getTargetParams = {
@@ -40,9 +43,9 @@ const getTargetInfo = () => {
   })
 }
 
-let targetTableData = reactive([])
+getTargetInfo()
 
 onMounted(() => {
-  getTargetInfo()
+	loading.value = false
 })
 </script>
