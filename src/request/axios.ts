@@ -1,6 +1,5 @@
 import axios from 'axios'
-// @ts-ignore
-import { showMessage } from "./status"    // 引入状态码文件
+import { showMessage } from './status'    // 引入状态码文件
 
 // 设置接口超时时间
 axios.defaults.timeout = 6000

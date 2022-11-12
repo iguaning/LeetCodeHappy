@@ -12,7 +12,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { FeedBackService } from '../api/apis'
+import { FeedBackService } from '@/api/apis'
 
 const textarea = ref('')
 

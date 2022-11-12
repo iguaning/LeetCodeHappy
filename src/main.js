@@ -1,16 +1,15 @@
 import { createApp } from 'vue'
+import App from './App.vue'
+
+import './assets/main.css'
+import './index.css'
+
 import { createPinia } from 'pinia'
 
-import App from './App.vue'
 import router from './router'
 
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-
-import 'default-passive-events'
-
-import './assets/main.css'
-import './index.css'
 
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 

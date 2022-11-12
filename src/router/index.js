@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import ScoreRank from '../views/ScoreRank.vue'
+import ScoreRank from '@/views/ScoreRank.vue'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -12,17 +12,17 @@ const router = createRouter({
         {
             path: '/target',
             name: 'target',
-            component: () => import('../views/SetTarget.vue')
+            component: () => import('@/views/SetTarget.vue')
         },
         {
             path: '/feedback',
             name: 'feedback',
-            component: () => import('../views/FeedBack.vue')
+            component: () => import('@/views/FeedBack.vue')
         },
         {
             path: '/user',
             name: 'userinfo',
-            component: () => import('../views/UserInfo.vue')
+            component: () => import('@/views/UserInfo.vue')
         }
     ]
 })

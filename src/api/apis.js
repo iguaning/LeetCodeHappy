@@ -1,4 +1,4 @@
-import { request } from '../request/axios'
+import { request } from '@/request/axios'
 
 export class UserService {
   static async submitUserInfo(params) {
