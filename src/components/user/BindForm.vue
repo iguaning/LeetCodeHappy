@@ -3,18 +3,19 @@
       label-position="top"
       label-width="110px"
       :model="formLabelAlign"
-      style="max-width: 460px"
+      style="max-width: 300px"
+      class="mx-auto"
   >
     <el-form-item label="LeetCode账号">
-      <el-input v-model="formLabelAlign.leetcode" />
+      <el-input v-model="formLabelAlign.leetcode" placeholder="请输入LeetCode账号" required />
     </el-form-item>
     <el-form-item label="Github账号">
-      <el-input v-model="formLabelAlign.github">
+      <el-input v-model="formLabelAlign.github" placeholder="Github用户名">
         <template #prepend>Https://github.com/</template>
       </el-input>
     </el-form-item>
     <el-form-item label="邮箱账号">
-      <el-input type="email" v-model="formLabelAlign.email" />
+      <el-input type="email" v-model="formLabelAlign.email" placeholder="Email" />
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="submitBinding">提交绑定</el-button>

@@ -1,11 +1,9 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   // darkMode: 'media', // or 'media' or 'class'
   theme: {
     extend: {},
     screens: {
-      'ssm': '100px',
       'sm': '640px',
       // => @media (min-width: 640px) { ... }
 
@@ -27,5 +25,6 @@ module.exports = {
   },
   plugins: [
     // require('@tailwindcss/forms'),
+    // require('@tailwindcss/line-clamp')
   ],
 }

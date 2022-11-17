@@ -1,11 +1,10 @@
 <template>
   <el-form
-      :inline="true"
-      label-position="right"
-      label-width="110px"
+      label-position="left"
+      label-width="80px"
       :model="formLabelAlign"
-      style="max-width: 100%"
-      class="demo-form-inline"
+      style="max-width: 279px"
+      class="mx-auto"
   >
     <el-form-item label="目标选择">
       <el-select v-model="formLabelAlign.value" class="m-2" placeholder="Select">
@@ -17,7 +16,7 @@
         />
       </el-select>
     </el-form-item>
-    <el-form-item label="LeetCode账号">
+    <el-form-item label="绑定账号">
       <el-input v-model="formLabelAlign.leetcode" placeholder="请输入LeetCode账号"/>
     </el-form-item>
     <el-form-item :label="formLabelAlign.value === '挑战PK' ? 'PK目标' : '目标值'">
@@ -44,7 +43,6 @@ import { UserService } from '@/api/apis'
 
 const submitTarget = () => {
   submitTargetInfo()
-  // console.log(formLabelAlign.value, formLabelAlign.leetcode, formLabelAlign.num, formLabelAlign.datepicker)
 }
 
 const submitTargetInfo = () => {

@@ -1,7 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-import './assets/main.css'
 import './index.css'
 
 import { createPinia } from 'pinia'
@@ -11,16 +10,11 @@ import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
-import 'default-passive-events'
-
-import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+import moment from 'moment'
 
 const app = createApp(App)
-for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
-    app.component(key, component)
-}
-
 app.use(createPinia())
 app.use(router)
 app.use(VueAxios, axios)
+app.use(moment)
 app.mount('#app')
