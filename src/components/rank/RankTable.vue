@@ -1,5 +1,13 @@
 <template>
-	<el-table :data="tableData" style="width: 100%" height="100%" v-loading="loading">
+	<div class="flex">
+		🔎<el-input v-model="searchContent" placeholder="搜索" />
+	</div>
+	<el-table
+			ref="searchTable"
+			:data="filterData"
+			style="width: 100%"
+			height="100%"
+			v-loading="loading">
 		<el-table-column fixed prop="user" label="用户" width="calc(100% / 8)" header-align="left">
 			<template #default="scope">
 				<div style="display: flex; align-items: center">
@@ -26,11 +34,11 @@
 </template>
 
 <script setup>
-import { onMounted, reactive, ref } from 'vue'
+import { onMounted, reactive, ref, computed } from 'vue'
 import { UserService } from '@/api/apis'
-import moment from 'moment'
 
 let tableData = reactive([])
+let searchContent = ref()
 const loading = ref(true)
 
 const getTableInfo = () => {
@@ -44,6 +52,21 @@ const getTableInfo = () => {
 }
 
 getTableInfo()
+
+const filterData = computed(() => {
+	let input = searchContent.value
+	let items
+	if (input) {
+		items = tableData.filter(function (item) {
+			return Object.keys(item).some(function (key1) {
+				return String(item[key1]).toLowerCase().match(input)
+			})
+		})
+	} else {
+		items = tableData
+	}
+	return items
+})
 
 onMounted(() => {
 	loading.value = false

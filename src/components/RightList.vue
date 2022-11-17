@@ -57,6 +57,8 @@
 			</div>
 			<div class="mt-1">
 				<p class="line-clamp-2 text-lg text-blue-400">
+<!--					当前时间：{{ currentTime }}-->
+<!--					<br>-->
 					上次更新时间：{{ preTime.format('HH : mm') }}
 					<br>
 					下次更新时间：{{ endTime.format('HH : mm') }}
@@ -69,11 +71,29 @@
 <script setup>
 import { useRefreshTable } from '@/stores/updateTime'
 import { storeToRefs } from 'pinia'
+import moment from 'moment'
+// import {ref} from 'vue'
 
 const refreshTableStore = useRefreshTable()
 const { preTime, endTime } = storeToRefs(refreshTableStore)
 const { refreshTable } = refreshTableStore
 
+// let currentTime = ref()
+
+// const setTime = () => {
+// 	currentTime.value = moment().format('HH : mm : ss')
+// }
+
+// const refreshTime = () => {
+// 	setTime()
+// 	setInterval(refreshTime, 1000)
+// 	clear()
+// }
+//
+// const clear = () => {
+// 	clearInterval(refreshTime)
+// }
+// refreshTime()
 refreshTable()
 setInterval(refreshTable, 60000)
 </script>

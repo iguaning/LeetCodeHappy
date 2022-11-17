@@ -1,6 +1,6 @@
 <template>
 	<index-page>
-		<template #bind-form>
+		<template #bind_form>
 			<bind-form></bind-form>
 		</template>
 	</index-page>

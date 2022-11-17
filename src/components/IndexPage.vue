@@ -93,7 +93,7 @@
 						<slot name="target_form"></slot>
 						<slot name="target_table"></slot>
 						<slot name="feed_back"></slot>
-						<slot name="bind-form"></slot>
+						<slot name="bind_form"></slot>
 					</div>
 					<!-- End main area -->
 				</main>
