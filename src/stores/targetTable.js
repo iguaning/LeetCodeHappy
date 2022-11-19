@@ -1,9 +1,9 @@
-import { reactive } from 'vue'
+import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import { UserService } from '@/api/apis'
 
-export const useTargetTable = defineStore('target', () => {
-	let targetTableData = reactive([])
+export const useTargetTable = defineStore('target_table', () => {
+	let targetTableData = ref([])
 
 	function getTargetInfo() {
 		const getTargetParams = {
@@ -12,9 +12,7 @@ export const useTargetTable = defineStore('target', () => {
 		}
 		UserService.getTargetInfo(getTargetParams).then((res) => {
 			// console.log(res.data)
-			for (let i = 0; i < res.data.length; ++i) {
-				targetTableData.push(res.data[i])
-			}
+			targetTableData.value = res.data
 			// console.log(targetTableData)
 		})
 	}

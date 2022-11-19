@@ -46,7 +46,9 @@
 				<p class="line-clamp-2 text-sm text-gray-600">
 					新人加入排行榜刷题打卡后生效。
 					<br>
-					排行榜每小时更新一次，若没有显示你的信息👇🏻
+					排行榜每小时更新一次；
+					<br>
+					若没有显示你的信息👇🏻
 					<br>
 					Please press F5 and wait for a while👽👽👽
 				</p>
@@ -78,8 +80,8 @@ import { storeToRefs } from 'pinia'
 
 const refreshTableStore = useRefreshTable()
 const { preHour, endHour, minute } = storeToRefs(refreshTableStore)
-const { refreshTime } = refreshTableStore
+const { setTime } = refreshTableStore
 
-refreshTime()
-setInterval(refreshTime, 60000)
+setTime()
+setInterval(setTime, 60000)
 </script>

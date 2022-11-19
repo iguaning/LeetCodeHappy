@@ -97,7 +97,7 @@
 					</div>
 					<!-- End main area -->
 				</main>
-				<aside class="hidden relative xl:flex xl:flex-col flex-shrink-0 w-64 border-l border-gray-200 overflow-y-auto">
+				<aside class="hidden relative xl:flex xl:flex-col flex-shrink-0 w-72 border-l border-gray-200 overflow-y-auto">
 					<right-list></right-list>
 				</aside>
 			</div>
