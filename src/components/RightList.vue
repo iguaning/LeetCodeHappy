@@ -25,9 +25,13 @@
 			</div>
 			<div class="mt-1">
 				<p class="line-clamp-2 text-sm text-gray-600">
-					当天没刷直接归0，刷了就会累加起来
+					当天没刷直接归0，刷了就会累加起来。
 					<br>
-					不积跬步，无以至千里。不积小流，无以成江海！！！🏋🏻‍♀️🏋🏻‍♀️🏋🏻‍♀️
+					不积跬步，无以至千里；
+					<br>
+					不积小流，无以成江海！！！
+					<br>
+					🏋🏻‍♀️🏋🏻‍♀️🏋🏻‍♀️
 				</p>
 			</div>
 		</li>
@@ -40,7 +44,7 @@
 			</div>
 			<div class="mt-1">
 				<p class="line-clamp-2 text-sm text-gray-600">
-					新人加入排行榜刷题打卡后生效
+					新人加入排行榜刷题打卡后生效。
 					<br>
 					排行榜每小时更新一次，若没有显示你的信息👇🏻
 					<br>
@@ -59,9 +63,9 @@
 				<p class="line-clamp-2 text-lg text-blue-400">
 <!--					当前时间：{{ currentTime }}-->
 <!--					<br>-->
-					上次更新时间：{{ preTime.format('HH : mm') }}
+					上次更新时间：{{ preHour }} : {{ minute }}
 					<br>
-					下次更新时间：{{ endTime.format('HH : mm') }}
+					下次更新时间：{{ endHour }} : {{ minute }}
 				</p>
 			</div>
 		</li>
@@ -71,29 +75,11 @@
 <script setup>
 import { useRefreshTable } from '@/stores/updateTime'
 import { storeToRefs } from 'pinia'
-import moment from 'moment'
-// import {ref} from 'vue'
 
 const refreshTableStore = useRefreshTable()
-const { preTime, endTime } = storeToRefs(refreshTableStore)
-const { refreshTable } = refreshTableStore
+const { preHour, endHour, minute } = storeToRefs(refreshTableStore)
+const { refreshTime } = refreshTableStore
 
-// let currentTime = ref()
-
-// const setTime = () => {
-// 	currentTime.value = moment().format('HH : mm : ss')
-// }
-
-// const refreshTime = () => {
-// 	setTime()
-// 	setInterval(refreshTime, 1000)
-// 	clear()
-// }
-//
-// const clear = () => {
-// 	clearInterval(refreshTime)
-// }
-// refreshTime()
-refreshTable()
-setInterval(refreshTable, 60000)
+refreshTime()
+setInterval(refreshTime, 60000)
 </script>

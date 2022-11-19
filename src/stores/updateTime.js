@@ -3,24 +3,28 @@ import { defineStore } from 'pinia'
 import moment from 'moment/moment'
 
 export const useRefreshTable = defineStore('refresh', () => {
-	let preTime = ref()
 	let currentTime = ref()
-	let endTime = ref()
+	let preHour = ref()
+	let endHour = ref()
+	let minute = ref(55)
 
 	function setTime() {
-		currentTime = moment()
-		if (0 <= currentTime.minute() < 55) {
-			preTime.value = moment({hour: currentTime.hour() - 1, minute: 55})
-			endTime.value = moment({hour: currentTime.hour(), minute: 55})
-		} else {
-			preTime.value = moment({hour: currentTime.hour(), minute: 55})
-			endTime.value = moment({hour: currentTime.hour() + 1, minute: 55})
+		currentTime.value = moment()
+		preHour.value = currentTime.value.hour()
+		endHour.value = currentTime.value.hour()
+		if (0 <= currentTime.value.minute() < 55) {
+			preHour.value--
+			endHour.value = currentTime.value.hour()
+		} else if (55 <= currentTime.value.minute() <= 59) {
+			preHour.value = currentTime.value.hour()
+			endHour.value++
 		}
+		// console.log('一分钟更新')
 	}
 
-	function refreshTable() {
+	function refreshTime() {
 		setTime()
 	}
 
-	return { preTime, currentTime, endTime, refreshTable }
+	return { preHour, endHour, minute, refreshTime }
 })

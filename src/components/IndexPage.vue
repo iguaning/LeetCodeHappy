@@ -18,7 +18,7 @@
 						<div class="flex-1 h-0 pt-5 pb-4 overflow-y-auto">
 							<div class="flex justify-center">
 								<router-link to="/">
-									<span class="text-2xl px-8 py-6 text-gray-600 hover:text-blue-400">LeetCodeHappy</span>
+									<span class="text-2xl px-4 py-3 text-gray-600 hover:text-blue-400">LeetCodeHappy</span>
 								</router-link>
 							</div>
 							<nav aria-label="Sidebar" class="mt-5">
@@ -53,7 +53,7 @@
 					<div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
 						<div class="flex justify-center">
 							<router-link to="/">
-								<span class="text-2xl px-8 py-6 text-gray-600 hover:text-blue-400">LeetCodeHappy</span>
+								<span class="text-2xl px-4 py-3 text-gray-600 hover:text-blue-400">LeetCodeHappy</span>
 							</router-link>
 						</div>
 						<nav aria-label="Sidebar" class="mt-5 flex-1">
@@ -97,7 +97,7 @@
 					</div>
 					<!-- End main area -->
 				</main>
-				<aside class="hidden relative xl:flex xl:flex-col flex-shrink-0 w-96 border-l border-gray-200 overflow-y-auto">
+				<aside class="hidden relative xl:flex xl:flex-col flex-shrink-0 w-64 border-l border-gray-200 overflow-y-auto">
 					<right-list></right-list>
 				</aside>
 			</div>
