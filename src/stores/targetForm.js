@@ -1,4 +1,4 @@
-import {reactive, ref} from 'vue'
+import { reactive } from 'vue'
 import { defineStore } from 'pinia'
 import { UserService } from '@/api/apis'
 
@@ -39,7 +39,7 @@ export const useTargetForm = defineStore('target_form', () => {
 	const submitTargetInfo = () => {
 		if (formLabelAlign.leetcode === '') {
 			alert('LeetCode账户不能为空!')
-			return
+			return false
 		}
 
 		const targetParams = {

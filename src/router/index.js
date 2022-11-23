@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import ScoreRank from '@/views/ScoreRank.vue'
+import ScoreRank from '@/views/RankView.vue'
 
 const router = createRouter({
     history: createWebHashHistory(),
@@ -12,17 +12,22 @@ const router = createRouter({
         {
             path: '/target',
             name: 'target',
-            component: () => import('@/views/SetTarget.vue')
+            component: () => import('@/views/TargetView.vue')
         },
         {
             path: '/feedback',
             name: 'feedback',
-            component: () => import('@/views/FeedBack.vue')
+            component: () => import('@/views/FeedView.vue')
         },
         {
             path: '/user',
             name: 'userinfo',
-            component: () => import('@/views/UserInfo.vue')
+            component: () => import('@/views/UserView.vue')
+        },
+        {
+            path: '/interview',
+            name: 'interview',
+            component: () => import('@/views/InterviewView.vue')
         }
     ]
 })

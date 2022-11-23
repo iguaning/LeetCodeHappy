@@ -54,34 +54,10 @@
 				</p>
 			</div>
 		</li>
-		<li class="relative bg-white py-5 px-4 hover:bg-gray-50">
-			<div class="flex justify-between space-x-3">
-				<div class="min-w-0 flex-1 block focus:outline-none">
-					<span class="absolute inset-0" aria-hidden="true" />
-					<p class="text-sm font-medium text-gray-900 truncate">——⏱️排行榜更新时间——</p>
-				</div>
-			</div>
-			<div class="mt-1">
-				<p class="line-clamp-2 text-lg text-blue-400">
-<!--					当前时间：{{ currentTime }}-->
-<!--					<br>-->
-					上次更新时间：{{ preHour }} : {{ minute }}
-					<br>
-					下次更新时间：{{ endHour }} : {{ minute }}
-				</p>
-			</div>
-		</li>
+		<banner-box></banner-box>
 	</ul>
 </template>
 
 <script setup>
-import { useRefreshTable } from '@/stores/updateTime'
-import { storeToRefs } from 'pinia'
-
-const refreshTableStore = useRefreshTable()
-const { preHour, endHour, minute } = storeToRefs(refreshTableStore)
-const { setTime } = refreshTableStore
-
-setTime()
-setInterval(setTime, 60000)
+import BannerBox from '@/components/unit/BannerBox.vue'
 </script>

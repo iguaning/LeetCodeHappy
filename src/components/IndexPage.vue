@@ -88,12 +88,21 @@
 			<div class="flex-1 relative z-0 flex overflow-hidden">
 				<main class="flex-1 relative z-0 overflow-y-auto focus:outline-none">
 					<!-- Start main area-->
-					<div class="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
-						<slot name="rank_table"></slot>
-						<slot name="target_form"></slot>
-						<slot name="target_table"></slot>
-						<slot name="feed_back"></slot>
-						<slot name="bind_form"></slot>
+					<div class=" py-6 px-4 sm:px-6 lg:px-8">
+						<!--成绩排名-->
+						<slot name="rank_view"></slot>
+
+						<!--目标设定-->
+						<slot name="target_view"></slot>
+
+						<!--意见反馈-->
+						<slot name="feed_view"></slot>
+
+						<!--虚拟面试-->
+						<slot name="interview_view"></slot>
+
+						<!--账号绑定-->
+						<slot name="user_view"></slot>
 					</div>
 					<!-- End main area -->
 				</main>
@@ -114,7 +123,8 @@ import {
 	ChartBarIcon,
 	ViewfinderCircleIcon,
 	ChatBubbleBottomCenterTextIcon,
-	UserIcon
+	UserIcon,
+	BookOpenIcon
 } from '@heroicons/vue/24/solid'
 import RightList from '@/components/RightList.vue'
 
@@ -144,6 +154,13 @@ const nav = reactive([
 	},
 	{
 		id: 4,
+		label: '虚拟面试',
+		url: '/interview',
+		icon: BookOpenIcon,
+		current: false
+	},
+	{
+		id: 5,
 		label: '账号绑定',
 		url: '/user',
 		icon: UserIcon,

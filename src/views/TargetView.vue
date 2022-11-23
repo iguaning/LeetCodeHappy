@@ -1,9 +1,7 @@
 <template>
 	<index-page>
-		<template #target_form>
+		<template #target_view>
 			<TargetForm></TargetForm>
-		</template>
-		<template #target_table>
 			<TargetTable></TargetTable>
 		</template>
 	</index-page>
