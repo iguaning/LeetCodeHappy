@@ -28,6 +28,7 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
 import moment from 'moment'
 import { useFeedBack } from '@/stores/feedback'
 import { storeToRefs } from 'pinia'
@@ -36,7 +37,9 @@ const feedBackStore = useFeedBack()
 const { listData } = storeToRefs(feedBackStore)
 const { getFeedBackList } = feedBackStore
 
-getFeedBackList()
+onMounted(() => {
+	getFeedBackList()
+})
 </script>
 
 <style scoped>

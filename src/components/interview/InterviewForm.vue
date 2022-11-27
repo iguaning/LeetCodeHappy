@@ -32,6 +32,7 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
 import { useInterview } from '@/stores/interview'
 import { storeToRefs } from 'pinia'
 
@@ -39,7 +40,9 @@ const typeStore = useInterview()
 const { formLabelAlign } = storeToRefs(typeStore)
 const { getInterviewTitle, getInterviewType, selectOne, titleNum } = typeStore
 
-getInterviewType()
+onMounted(() => {
+	getInterviewType()
+})
 </script>
 
 <style scoped>

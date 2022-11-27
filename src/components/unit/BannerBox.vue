@@ -1,6 +1,6 @@
 <template>
 	<el-alert type="success" effect="dark" title="挑战PK榜🎉">
-		<el-carousel indicator-position="none" autoplay arrow="never" height="30px" interval="2000" direction="vertical" pause-on-hover="false">
+		<el-carousel indicator-position="none" autoplay arrow="never" height="30px" :interval=2000 direction="vertical" :pause-on-hover=false>
 			<el-carousel-item v-for="(item, index) in user_name" :key="item">
 				<div class="text-sm">
 					{{ item }} PK {{ user_opponent[index] }}

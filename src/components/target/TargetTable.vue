@@ -123,7 +123,9 @@ const getRate = (name) => {
 
 onMounted(() => {
 	getTableInfo()
-	getTargetInfo()
+	setTimeout(() => {
+		getTargetInfo()
+	}, 800)
 })
 
 </script>

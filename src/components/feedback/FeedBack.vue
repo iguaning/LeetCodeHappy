@@ -18,9 +18,9 @@ const { textarea } = storeToRefs(feedBackStore)
 const { submitFeedBack, getFeedBackList } = feedBackStore
 
 const submit = () => {
+	submitFeedBack()
 	setTimeout(() => {
-		submitFeedBack()
 		getFeedBackList()
-	}, 800)
+	}, 1000)
 }
 </script>

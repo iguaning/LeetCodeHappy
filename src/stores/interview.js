@@ -1,4 +1,4 @@
-import { reactive, ref } from 'vue'
+import { reactive } from 'vue'
 import { defineStore } from 'pinia'
 import { InterviewService } from '@/api/apis'
 
@@ -36,6 +36,7 @@ export const useInterview = defineStore('interview', () => {
 		formLabelAlign.titleInfoType = formLabelAlign.titleInfo.filter(item => item.type === val)
 	}
 
+	//每类题目数量
 	const titleNum = (tp) => {
 		let number = 0
 		for (let i = 0; i < formLabelAlign.titleInfo.length; ++i) {

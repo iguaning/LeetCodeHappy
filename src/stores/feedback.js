@@ -35,7 +35,6 @@ export const useFeedBack = defineStore('feedback', () => {
 		}
 
 		FeedBackService.submitFeedBackInfo(feedBackParams).then((res) => {
-			console.log(res.data)
 			if (res.data[0] === 0) {
 				alert("反馈成功!");
 			} else {
