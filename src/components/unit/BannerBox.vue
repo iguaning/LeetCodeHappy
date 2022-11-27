@@ -32,7 +32,7 @@ onMounted(() => {
 				user_opponent.value.push(targetTableData.value[i].opponent)
 			}
 		}
-	},500)
+	},800)
 })
 
 

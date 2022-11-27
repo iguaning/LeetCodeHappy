@@ -2,7 +2,22 @@ import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import { FeedBackService } from '@/api/apis'
 
-export const useFeedBackForm = defineStore('feedback_form', () => {
+export const useFeedBack = defineStore('feedback', () => {
+	//获取反馈信息
+	let listData = ref([])
+
+	const getFeedBackList = () => {
+		const feedBackParams = {
+			pn: 1,
+			rn: 1000
+		}
+
+		FeedBackService.getFeedBackList(feedBackParams).then((res) => {
+			listData.value = res.data
+		})
+	}
+
+	//提交反馈信息
 	const textarea = ref('')
 
 	const submitFeedBack = () => {
@@ -29,5 +44,5 @@ export const useFeedBackForm = defineStore('feedback_form', () => {
 		})
 	}
 
-	return { textarea, submitFeedBack }
+	return { listData, textarea, getFeedBackList, submitFeedBack }
 })

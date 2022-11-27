@@ -41,7 +41,7 @@
       />
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" @click="submitTarget">提交目标</el-button>
+      <el-button type="primary" @click="submit">提交目标</el-button>
     </el-form-item>
   </el-form>
 </template>
@@ -60,6 +60,7 @@ const { submitTarget } = targetFormStore
 import { useTable } from '@/stores/table'
 const tableStore = useTable()
 const { tableData } = storeToRefs(tableStore)
+const { getTargetInfo } = tableStore
 
 //自动补全
 const restaurants = ref([])
@@ -90,6 +91,15 @@ const handleSelect = (item) => {
 onMounted(() => {
 	restaurants.value = newArr.value
 })
+
+// 提交表单
+const submit = () => {
+	submitTarget()
+	//更新表格数据
+	setTimeout(() => {
+		getTargetInfo()
+	}, 1000)
+}
 </script>
 
 <style scoped>

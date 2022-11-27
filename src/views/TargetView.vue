@@ -1,14 +1,11 @@
 <template>
-	<index-page>
-		<template #target_view>
-			<TargetForm></TargetForm>
-			<TargetTable></TargetTable>
-		</template>
-	</index-page>
+	<div class="flex flex-col justify-start">
+		<TargetForm></TargetForm>
+		<TargetTable></TargetTable>
+	</div>
 </template>
 
 <script setup>
-import IndexPage from '@/components/IndexPage.vue'
 import TargetTable from '@/components/target/TargetTable.vue'
 import TargetForm from '@/components/target/TargetForm.vue'
 </script>

@@ -50,7 +50,6 @@ const submitUserInfo = () => {
   }
 
   UserService.submitUserInfo(userParams).then((res) => {
-    console.log(res.data)
     if (res.data[0] === 0) {
       alert("添加成功!")
     } else {

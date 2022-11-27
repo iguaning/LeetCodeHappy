@@ -1,4 +1,4 @@
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import { defineStore } from 'pinia'
 import { InterviewService } from '@/api/apis'
 
@@ -10,7 +10,8 @@ export const useInterview = defineStore('interview', () => {
 		value: '',
 
 		titleInfo: [],
-		titleInfoType: []
+		titleInfoType: [],
+		textarea: '',
 	})
 
 	const getInterviewType = () => {
@@ -35,5 +36,15 @@ export const useInterview = defineStore('interview', () => {
 		formLabelAlign.titleInfoType = formLabelAlign.titleInfo.filter(item => item.type === val)
 	}
 
-	return { formLabelAlign, getInterviewTitle, getInterviewType, selectOne }
+	const titleNum = (tp) => {
+		let number = 0
+		for (let i = 0; i < formLabelAlign.titleInfo.length; ++i) {
+			if (formLabelAlign.titleInfo[i].type === tp) {
+				number += 1
+			}
+		}
+		return number
+	}
+
+	return { formLabelAlign, getInterviewTitle, getInterviewType, selectOne, titleNum }
 })

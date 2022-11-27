@@ -1,6 +1,7 @@
 import { reactive } from 'vue'
 import { defineStore } from 'pinia'
 import { UserService } from '@/api/apis'
+import moment from 'moment'
 
 export const useTargetForm = defineStore('target_form', () => {
 	const formLabelAlign = reactive({
@@ -42,6 +43,11 @@ export const useTargetForm = defineStore('target_form', () => {
 			return false
 		}
 
+		if (moment(formLabelAlign.datepicker).isBefore(moment(), 'day', 'month', 'year')) {
+			alert('日期填写错误!')
+			return false
+		}
+
 		const targetParams = {
 			target_type: String(formLabelAlign.value),
 			lc_account: String(formLabelAlign.leetcode),
@@ -50,11 +56,10 @@ export const useTargetForm = defineStore('target_form', () => {
 		}
 
 		UserService.submitTargetInfo(targetParams).then((res) => {
-			console.log(res.data)
 			if (res.data[0] === 0) {
-				alert("提交成功!");
+				alert("提交成功!")
 			} else {
-				alert(res.data[1]);
+				alert(res.data[1])
 			}
 		})
 	}

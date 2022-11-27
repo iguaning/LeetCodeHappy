@@ -14,7 +14,18 @@
 						:key="item.type"
 						:label="item.name"
 						:value="item.name"
-				/>
+				>
+					<span style="float: left">{{ item.name }}</span>
+					<span
+							style="
+          float: right;
+          color: var(--el-text-color-secondary);
+          font-size: 13px;
+        "
+					>
+						{{ titleNum(item.name) }}
+					</span>
+				</el-option>
 			</el-select>
 		</el-form-item>
 	</el-form>
@@ -26,7 +37,7 @@ import { storeToRefs } from 'pinia'
 
 const typeStore = useInterview()
 const { formLabelAlign } = storeToRefs(typeStore)
-const { getInterviewType, selectOne } = typeStore
+const { getInterviewTitle, getInterviewType, selectOne, titleNum } = typeStore
 
 getInterviewType()
 </script>

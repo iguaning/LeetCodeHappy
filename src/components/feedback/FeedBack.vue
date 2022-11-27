@@ -6,16 +6,21 @@
 			placeholder="意见反馈"
 			class="mb-4"
 	/>
-	<el-form-item class="mb-4 text-right">
-		<el-button type="primary" @click="submitFeedBack">提交意见</el-button>
-	</el-form-item>
+	<el-button class="mb-4" type="primary" @click="submitFeedBack">提交意见</el-button>
 </template>
 
 <script setup>
-import { useFeedBackForm } from '@/stores/feedBackForm'
+import { useFeedBack } from '@/stores/feedback'
 import { storeToRefs } from 'pinia'
 
-const feedBackFormStore = useFeedBackForm()
-const { textarea } = storeToRefs(feedBackFormStore)
-const { submitFeedBack } = feedBackFormStore
+const feedBackStore = useFeedBack()
+const { textarea } = storeToRefs(feedBackStore)
+const { submitFeedBack, getFeedBackList } = feedBackStore
+
+const submit = () => {
+	setTimeout(() => {
+		submitFeedBack()
+		getFeedBackList()
+	}, 800)
+}
 </script>

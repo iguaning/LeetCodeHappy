@@ -12,9 +12,12 @@ import VueAxios from 'vue-axios'
 
 import moment from 'moment'
 
+import { GlobalCmComponent } from 'codemirror-editor-vue3'
+
 const app = createApp(App)
 app.use(createPinia())
 app.use(router)
 app.use(VueAxios, axios)
 app.use(moment)
+app.use(GlobalCmComponent)
 app.mount('#app')
