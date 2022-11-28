@@ -38,16 +38,6 @@ export const useTargetForm = defineStore('target_form', () => {
 	})
 
 	const submitTargetInfo = () => {
-		if (formLabelAlign.leetcode === '') {
-			alert('LeetCode账户不能为空!')
-			return false
-		}
-
-		if (moment(formLabelAlign.datepicker).isBefore(moment(), 'day', 'month', 'year')) {
-			alert('日期填写错误!')
-			return false
-		}
-
 		const targetParams = {
 			target_type: String(formLabelAlign.value),
 			lc_account: String(formLabelAlign.leetcode),
@@ -55,7 +45,7 @@ export const useTargetForm = defineStore('target_form', () => {
 			dead_line: String(formLabelAlign.datepicker)
 		}
 
-		UserService.submitTargetInfo(targetParams).then((res) => {
+		UserService.submitTarget(targetParams).then((res) => {
 			if (res.data[0] === 0) {
 				alert("提交成功!")
 			} else {
@@ -65,6 +55,16 @@ export const useTargetForm = defineStore('target_form', () => {
 	}
 
 	const submitTarget = () => {
+		if (formLabelAlign.leetcode === '') {
+			alert('LeetCode账户不能为空!')
+			return
+		}
+
+		if (moment(formLabelAlign.datepicker).isBefore(moment(), 'day')) {
+			alert('日期填写错误!')
+			return
+		}
+
 		submitTargetInfo()
 	}
 

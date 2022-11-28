@@ -12,7 +12,7 @@ export const useFeedBack = defineStore('feedback', () => {
 			rn: 1000
 		}
 
-		FeedBackService.getFeedBackList(feedBackParams).then((res) => {
+		FeedBackService.getList(feedBackParams).then((res) => {
 			listData.value = res.data
 		})
 	}
@@ -34,7 +34,7 @@ export const useFeedBack = defineStore('feedback', () => {
 			msg: textarea.value
 		}
 
-		FeedBackService.submitFeedBackInfo(feedBackParams).then((res) => {
+		FeedBackService.submitInfo(feedBackParams).then((res) => {
 			if (res.data[0] === 0) {
 				alert("反馈成功!");
 			} else {

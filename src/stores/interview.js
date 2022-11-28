@@ -15,7 +15,7 @@ export const useInterview = defineStore('interview', () => {
 	})
 
 	const getInterviewType = () => {
-		InterviewService.getInterviewType().then((res) => {
+		InterviewService.getType().then((res) => {
 			formLabelAlign.typeInfo = res.data
 			// console.log(formLabelAlign.typeInfo)
 		})
@@ -26,7 +26,7 @@ export const useInterview = defineStore('interview', () => {
 			pn: 1,
 			rn: 1000
 		}
-		InterviewService.getInterviewTitle(params).then((res) => {
+		InterviewService.getTitle(params).then((res) => {
 			formLabelAlign.titleInfo = res.data
 			// console.log(formLabelAlign.titleInfo)
 		})

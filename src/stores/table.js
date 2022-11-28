@@ -10,7 +10,7 @@ export const useTable = defineStore('table', () => {
 	let targetTableData = ref([])
 
 	const getTableInfo = () => {
-    UserService.getTableInfo().then((res) => {
+    UserService.getTable().then((res) => {
 			tableData.value = res.data
 		})
 	}
@@ -20,7 +20,7 @@ export const useTable = defineStore('table', () => {
 			pn: 1,
 			rn: 1000
 		}
-	  UserService.getTargetInfo(params).then((res) => {
+	  UserService.getTarget(params).then((res) => {
 			targetTableData.value = res.data
 		})
 	}
