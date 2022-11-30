@@ -50,8 +50,21 @@
 					<br>
 					若没有显示你的信息👇🏻
 					<br>
-					Please press F5 and wait for a while👽👽👽
+					Please press F5 and wait for a while
+					<br>
+					👽👽👽
 				</p>
+			</div>
+		</li>
+		<li class="relative bg-white py-5 px-4 hover:bg-gray-50">
+			<div class="flex justify-between space-x-3">
+				<div class="min-w-0 flex-1">
+					<a href="https://lccn.lbao.site/" target="_blank" class="block focus:outline-none">
+						<span class="absolute inset-0" aria-hidden="true" />
+						<p class="text-sm font-medium text-gray-900 truncate">——<img src="../assets/faviconV2.png" class="inline-block" />周赛分数预测网站——</p>
+						<p class="text-sm text-gray-500 truncate">➡️点此到达</p>
+					</a>
+				</div>
 			</div>
 		</li>
 		<banner-box></banner-box>

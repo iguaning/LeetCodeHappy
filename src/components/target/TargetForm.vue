@@ -59,8 +59,8 @@ const { submitTarget } = targetFormStore
 // 表格数据
 import { useTable } from '@/stores/table'
 const tableStore = useTable()
-const { tableData } = storeToRefs(tableStore)
-const { getTargetInfo } = tableStore
+const { rankTable } = storeToRefs(tableStore)
+const { getTargetTable } = tableStore
 
 //自动补全
 const restaurants = ref([])
@@ -80,7 +80,7 @@ const createFilter = (queryString) => {
 	}
 }
 
-let newArr = ref(tableData.value.map(o => {
+let newArr = ref(rankTable.value.map(o => {
 	return Object.assign(o, { value: o.user })
 }))
 
@@ -97,7 +97,7 @@ const submit = () => {
 	submitTarget()
 	//更新表格数据
 	setTimeout(() => {
-		getTargetInfo()
+		getTargetTable()
 	}, 1000)
 }
 </script>

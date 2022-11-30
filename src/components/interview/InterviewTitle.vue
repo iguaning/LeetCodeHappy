@@ -37,8 +37,6 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
-
 // 获取题目数据
 import { useInterview } from '@/stores/interview'
 import { storeToRefs } from 'pinia'
@@ -46,13 +44,5 @@ import CodeEditor from '@/components/codemirror/CodeEditor.vue'
 
 const interviewStore = useInterview()
 const { formLabelAlign } = storeToRefs(interviewStore)
-const { getInterviewTitle } = interviewStore
 
-onMounted(() => {
-	getInterviewTitle()
-})
 </script>
-
-<style scoped>
-
-</style>

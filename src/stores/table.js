@@ -3,27 +3,25 @@ import { defineStore } from 'pinia'
 import { UserService } from '@/api/apis'
 
 export const useTable = defineStore('table', () => {
-	let tableData = ref([])
-	let loading = ref(true)
+	let rankTable = ref([])
 	let searchContent = ref('')
+	let targetTable = ref([])
 
-	let targetTableData = ref([])
-
-	const getTableInfo = () => {
+	const getRankTable = () => {
     UserService.getTable().then((res) => {
-			tableData.value = res.data
+	    rankTable.value = res.data
 		})
 	}
 
-	const getTargetInfo = () => {
+	const getTargetTable = () => {
 		const params = {
 			pn: 1,
 			rn: 1000
 		}
 	  UserService.getTarget(params).then((res) => {
-			targetTableData.value = res.data
+		  targetTable.value = res.data
 		})
 	}
 
-	return { tableData, loading, searchContent, targetTableData, getTableInfo, getTargetInfo }
+	return { rankTable, searchContent, targetTable, getRankTable, getTargetTable }
 })

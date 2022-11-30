@@ -43,26 +43,25 @@
 </template>
 
 <script setup>
-import { computed, onMounted } from 'vue'
+import { computed } from 'vue'
 import { MagnifyingGlassIcon } from '@heroicons/vue/24/solid'
 import { useTable } from '@/stores/table'
 import { storeToRefs } from 'pinia'
 
 const tableStore = useTable()
-const { tableData, loading, searchContent } = storeToRefs(tableStore)
-const { getTableInfo } = tableStore
+const { rankTable, searchContent } = storeToRefs(tableStore)
 
 const filterData = computed(() => {
 	let input = searchContent.value
 	let items
 	if (input) {
-		items = tableData.value.filter(function (item) {
+		items = rankTable.value.filter(function (item) {
 			return Object.keys(item).some(function (key1) {
 				return String(item[key1]).toLowerCase().match(input)
 			})
 		})
 	} else {
-		items = tableData.value
+		items = rankTable.value
 	}
 	return items
 })
@@ -71,8 +70,4 @@ const lazyDays = (lazy) => {
 	return lazy === '正常' || lazy === '懒惰萌芽期' || lazy === '懒惰炼气期' ? 'success' :
 			(lazy === '懒惰筑基期' || lazy === '懒惰结丹期' || lazy === '懒惰元婴期' ? 'warning' : 'danger')
 }
-
-onMounted(() => {
-	getTableInfo()
-})
 </script>

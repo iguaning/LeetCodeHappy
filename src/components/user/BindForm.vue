@@ -6,16 +6,14 @@
       style="max-width: 300px"
       class="mx-auto"
   >
-    <el-form-item label="LeetCode账号">
-      <el-input v-model="formLabelAlign.leetcode" placeholder="请输入LeetCode账号" required />
+    <el-form-item label="LeetCode账号" :required="true">
+      <el-input v-model="formLabelAlign.leetcode" placeholder="请输入LeetCode账号" clearable />
     </el-form-item>
     <el-form-item label="Github账号">
-      <el-input v-model="formLabelAlign.github" placeholder="Github用户名">
-        <template #prepend>Https://github.com/</template>
-      </el-input>
+      <el-input v-model="formLabelAlign.github" placeholder="请输入Github用户名" clearable />
     </el-form-item>
     <el-form-item label="邮箱账号">
-      <el-input type="email" v-model="formLabelAlign.email" placeholder="Email" />
+      <el-input type="email" v-model="formLabelAlign.email" placeholder="Email" clearable />
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="submitBinding">提交绑定</el-button>
@@ -45,11 +43,11 @@ const submitUserInfo = () => {
 
   const userParams = {
     lc_account: formLabelAlign.leetcode,
-    git_account: 'https://github.com/' + formLabelAlign.github,
+    git_account: formLabelAlign.github,
     email_account: formLabelAlign.email
   }
 
-  UserService.submitUserInfo(userParams).then((res) => {
+  UserService.submitUser(userParams).then((res) => {
     if (res.data[0] === 0) {
       alert("添加成功!")
     } else {

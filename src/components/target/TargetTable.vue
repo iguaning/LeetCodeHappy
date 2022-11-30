@@ -1,25 +1,15 @@
 <template>
   <el-table
-		  :data="targetTableData"
+		  :data="targetTable"
 		  style="width: 100%"
 		  table-layout="fixed"
 		  height="calc(100vh - 300px)">
-    <el-table-column prop="user" label="用户" width="160" header-align="center" align="center" fixed>
+    <el-table-column prop="user" label="用户" min-width="160" header-align="center" align="center" fixed>
       <template #default="scope">
         <el-link type="primary" :underline="false" :href="'https://leetcode.cn/u/' + scope.row.user" target="_blank">{{ scope.row.user }}</el-link>
       </template>
     </el-table-column>
     <el-table-column prop="target_type" label="目标类型" header-align="center" align="center" />
-<!--	  <el-table-column prop="target_value" label="目标值"  header-align="center" align="center">-->
-<!--		  <template #default="scope">-->
-<!--			  <div v-if="scope.row.target_type === '连续打卡天数'">{{ moment(scope.row.dead_line).diff(moment(scope.row.create_date), 'day') }}</div>-->
-<!--			  <div v-else-if="scope.row.target_type === '挑战PK'">-->
-<!--				  自己:{{ getRate(scope.row.user) }}-->
-<!--					<br>-->
-<!--				  对手:{{ getRate(scope.row.opponent) }}</div>-->
-<!--			  <div v-else>{{ scope.row.target_value }}</div>-->
-<!--		  </template>-->
-<!--	  </el-table-column>-->
 	  <el-table-column label="目标值" header-align="center">
 		  <el-table-column label="当前" header-align="center" align="center">
 			  <template #default="scope">
@@ -72,60 +62,51 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
 import { useTable } from '@/stores/table'
 import { storeToRefs } from 'pinia'
 import moment from 'moment'
 
 const tableStore = useTable()
-const { tableData, targetTableData } = storeToRefs(tableStore)
-const { getTableInfo, getTargetInfo } = tableStore
+const { rankTable, targetTable } = storeToRefs(tableStore)
 
 const getSolve = (name) => {
-	for (let i = 0; i < tableData.value.length; ++i) {
-		if (tableData.value[i].user === name){
-			return tableData.value[i].total_solve
+	for (let i = 0; i < rankTable.value.length; ++i) {
+		if (rankTable.value[i].user === name){
+			return rankTable.value[i].total_solve
 		}
 	}
 }
 
 const getCode = (name) => {
-	for (let i = 0; i < tableData.value.length; ++i) {
-		if (tableData.value[i].user === name){
-			return tableData.value[i].code_submit
+	for (let i = 0; i < rankTable.value.length; ++i) {
+		if (rankTable.value[i].user === name){
+			return rankTable.value[i].code_submit
 		}
 	}
 }
 
 const getProblem = (name) => {
-	for (let i = 0; i < tableData.value.length; ++i) {
-		if (tableData.value[i].user === name){
-			return tableData.value[i].problem_submit
+	for (let i = 0; i < rankTable.value.length; ++i) {
+		if (rankTable.value[i].user === name){
+			return rankTable.value[i].problem_submit
 		}
 	}
 }
 
 const getDays = (name) => {
-	for (let i = 0; i < tableData.value.length; ++i) {
-		if (tableData.value[i].user === name){
-			return tableData.value[i].continue_days
+	for (let i = 0; i < rankTable.value.length; ++i) {
+		if (rankTable.value[i].user === name){
+			return rankTable.value[i].continue_days
 		}
 	}
 }
 
 const getRate = (name) => {
-	for (let i = 0; i < tableData.value.length; ++i) {
-		if (tableData.value[i].user === name){
-			return tableData.value[i].rating_score
+	for (let i = 0; i < rankTable.value.length; ++i) {
+		if (rankTable.value[i].user === name){
+			return rankTable.value[i].rating_score
 		}
 	}
 }
-
-onMounted(() => {
-	getTableInfo()
-	setTimeout(() => {
-		getTargetInfo()
-	}, 800)
-})
 
 </script>

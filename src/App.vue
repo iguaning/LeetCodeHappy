@@ -24,7 +24,7 @@
 							<nav aria-label="Sidebar" class="mt-5">
 								<div class="px-2 space-y-1">
 									<router-link v-for="item in nav" :key="item.id" :to="item.url" :class="['text-gray-600 hover:bg-gray-50 hover:text-gray-900', 'group flex items-center px-2 py-2 text-sm font-medium rounded-md']" active-class="active">
-										<component :is="item.icon" :class="['mr-3 flex-shrink-0 h-6 w-6']" active-class="active" aria-hidden="true" />
+										<component :is="item.icon" :class="['mr-3 flex-shrink-0 h-6 w-6']" aria-hidden="true" />
 										{{ item.label }}
 									</router-link>
 								</div>
@@ -59,7 +59,7 @@
 						<nav aria-label="Sidebar" class="mt-5 flex-1">
 							<div class="px-2 space-y-1">
 								<router-link v-for="(item, index) in nav" :key="index" :to="item.url" :class="['text-gray-600 hover:bg-gray-50 hover:text-gray-900', 'group flex items-center px-2 py-2 text-sm font-medium rounded-md']" active-class="active">
-									<component :is="item.icon" :class="['mr-3 flex-shrink-0 h-6 w-6']" active-class="active" aria-hidden="true" />
+									<component :is="item.icon" :class="['mr-3 flex-shrink-0 h-6 w-6']" aria-hidden="true" />
 									{{ item.label }}
 								</router-link>
 							</div>
@@ -89,7 +89,7 @@
 				<main class="flex-1 relative z-0 overflow-y-auto focus:outline-none">
 					<!-- Start main area-->
 					<div class="py-6 px-4 sm:px-6 lg:px-8 max-h-screen">
-						<router-view></router-view>
+						<router-view />
 					</div>
 					<!-- End main area -->
 				</main>
@@ -102,7 +102,7 @@
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue'
+import { reactive, ref, onMounted } from 'vue'
 import { Dialog, DialogOverlay, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import {
 	Bars3Icon,
@@ -114,6 +114,18 @@ import {
 	BookOpenIcon
 } from '@heroicons/vue/24/solid'
 import RightList from '@/components/RightList.vue'
+import { useTable } from '@/stores/table'
+import { useFeedBack } from '@/stores/feedback'
+import { useInterview } from '@/stores/interview'
+
+const interviewStore = useInterview()
+const { getInterviewType, getInterviewTitle } = interviewStore
+
+const feedBackStore = useFeedBack()
+const { getFeedBackList } = feedBackStore
+
+const tableStore = useTable()
+const { getRankTable, getTargetTable } = tableStore
 
 let sidebarOpen = ref(false)
 
@@ -122,43 +134,52 @@ const nav = reactive([
 		id: 1,
 		label: '成绩排名',
 		url: '/',
-		icon: ChartBarIcon,
-		current: true
+		icon: ChartBarIcon
 	},
 	{
 		id: 2,
 		label: '设定目标',
 		url: '/target',
-		icon: ViewfinderCircleIcon,
-		current: false
+		icon: ViewfinderCircleIcon
 	},
 	{
 		id: 3,
 		label: '意见反馈',
 		url: '/feedback',
-		icon: ChatBubbleBottomCenterTextIcon,
-		current: false
+		icon: ChatBubbleBottomCenterTextIcon
 	},
 	{
 		id: 4,
 		label: '虚拟面试',
 		url: '/interview',
-		icon: BookOpenIcon,
-		current: false
+		icon: BookOpenIcon
 	},
 	{
 		id: 5,
 		label: '账号绑定',
 		url: '/user',
-		icon: UserIcon,
-		current: false
+		icon: UserIcon
 	}
 ])
+
+onMounted(() => {
+	getRankTable()
+	setTimeout(() => {
+		getTargetTable()
+		setTimeout(() => {
+			getFeedBackList()
+			setTimeout(() => {
+				getInterviewType()
+				getInterviewTitle()
+			}, 100)
+		}, 100)
+	}, 100)
+})
+
 </script>
 
 <style scoped>
 .active {
-	background-color: #F3F4F6;
 	color: #60A5FA;
 }
 </style>

@@ -19,17 +19,14 @@ let user_name = ref([])
 let user_opponent = ref([])
 
 const tableStore = useTable()
-const { targetTableData } = storeToRefs(tableStore)
-const { getTargetInfo } = tableStore
+const { targetTable } = storeToRefs(tableStore)
 
 onMounted(() => {
-	getTargetInfo()
-
 	setTimeout(() => {
-		for (let i = 0; i < targetTableData.value.length; ++i) {
-			if (targetTableData.value[i].target_type === '挑战PK' && targetTableData.value[i].status === '进行中'){
-				user_name.value.push(targetTableData.value[i].user)
-				user_opponent.value.push(targetTableData.value[i].opponent)
+		for (let i = 0; i < targetTable.value.length; ++i) {
+			if (targetTable.value[i].target_type === '挑战PK' && targetTable.value[i].status === '进行中'){
+				user_name.value.push(targetTable.value[i].user)
+				user_opponent.value.push(targetTable.value[i].opponent)
 			}
 		}
 	},800)
