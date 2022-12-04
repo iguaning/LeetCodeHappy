@@ -47,6 +47,7 @@ import { computed } from 'vue'
 import { MagnifyingGlassIcon } from '@heroicons/vue/24/solid'
 import { useTable } from '@/stores/table'
 import { storeToRefs } from 'pinia'
+import _ from 'lodash'
 
 const tableStore = useTable()
 const { rankTable, searchContent } = storeToRefs(tableStore)

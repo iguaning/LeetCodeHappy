@@ -10,7 +10,7 @@
 				</div>
 				<div>{{ item.content }}</div>
 				<div class="text-sm text-gray-500">{{ moment().year() === moment(item.date_time).year() ? moment(item.date_time).format('MM-DD') : moment(item.date_time).format('YY-MM-DD') }}</div>
-				<div class="text-sm flex justify-start">
+				<div v-show="item.answer != ''" class="text-sm flex justify-start">
 					<div class="mr-2">
 						<el-avatar :size="25" src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png" />
 					</div>
@@ -36,7 +36,3 @@ const feedBackStore = useFeedBack()
 const { listData } = storeToRefs(feedBackStore)
 
 </script>
-
-<style scoped>
-
-</style>

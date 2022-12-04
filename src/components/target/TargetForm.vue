@@ -17,7 +17,14 @@
       </el-select>
     </el-form-item>
     <el-form-item label="绑定账号">
-      <el-input v-model="formLabelAlign.leetcode" placeholder="请输入LeetCode账号"/>
+	    <el-autocomplete
+			    v-model="formLabelAlign.leetcode"
+			    placeholder="请输入LeetCode账号"
+			    :fetch-suggestions="querySearch"
+			    :trigger-on-focus="false"
+			    class="inline w-52"
+			    @select="handleSelect"
+	    />
     </el-form-item>
     <el-form-item :label="formLabelAlign.value === '挑战PK' ? 'PK目标' : '目标值'">
       <el-autocomplete
@@ -26,10 +33,16 @@
 		      :disabled="formLabelAlign.value === '连续打卡天数'"
 		      :fetch-suggestions="querySearch"
 		      :trigger-on-focus="false"
-		      clearable
-		      class="inline-input w-50"
+		      class="inline w-52"
 		      @select="handleSelect"
+		      v-if="formLabelAlign.value === '挑战PK'"
       />
+	    <el-input
+			    v-model="formLabelAlign.num"
+			    :placeholder="formLabelAlign.value === '挑战PK' ? '请输入PK目标账号' : '请输入目标值'"
+			    :disabled="formLabelAlign.value === '连续打卡天数'"
+			    v-else
+	    />
     </el-form-item>
     <el-form-item label="完成日期">
       <el-date-picker
