@@ -10,7 +10,7 @@
 			style="width: 100%"
 			table-layout="fixed"
 			height="calc(100vh - 90px)">
-		<el-table-column fixed prop="user" label="用户" min-width="160" header-align="center">
+		<el-table-column fixed prop="user" label="用户" min-width="160" header-align="center" align="center" :sortable="true" :sort-method="(a, b)=>{ return a.user.toUpperCase().charCodeAt(0) - b.user.toUpperCase().charCodeAt(0) }">
 			<template #default="scope">
 				<div style="display: flex; align-items: center">
 					<a :href="'https://leetcode.cn/u/' + scope.row.user" target="_blank" class="text-blue-400 hover:text-blue-300">{{ scope.row.user }}</a>
