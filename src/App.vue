@@ -164,16 +164,11 @@ const nav = reactive([
 
 onMounted(() => {
 	getRankTable()
-	setTimeout(() => {
-		getTargetTable()
-		setTimeout(() => {
-			getFeedBackList()
-			setTimeout(() => {
-				getInterviewType()
-				getInterviewTitle()
-			}, 100)
-		}, 100)
-	}, 100)
+  getTargetTable()
+  getFeedBackList()
+  getInterviewType()
+  getInterviewTitle()
+
 })
 
 </script>

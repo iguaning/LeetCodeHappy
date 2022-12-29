@@ -4,12 +4,26 @@
 		  style="width: 100%"
 		  table-layout="fixed"
 		  height="calc(100vh - 300px)">
-    <el-table-column prop="user" label="用户" min-width="160" header-align="center" align="center" fixed>
+    <el-table-column prop="user" label="用户" min-width="160" header-align="center" align="center" fixed :sortable="true" :sort-method="(a, b)=>{ return a.user.toUpperCase().charCodeAt(0) - b.user.toUpperCase().charCodeAt(0) }">
       <template #default="scope">
         <el-link type="primary" :underline="false" :href="'https://leetcode.cn/u/' + scope.row.user" target="_blank">{{ scope.row.user }}</el-link>
       </template>
     </el-table-column>
-    <el-table-column prop="target_type" label="目标类型" header-align="center" align="center" />
+    <el-table-column
+        prop="target_type"
+        label="目标类型"
+        header-align="center"
+        align="center"
+        :filters="[
+          { text: '总刷题量', value: '总刷题量' },
+          { text: 'push代码行数', value: 'push代码行数' },
+          { text: 'push代码题量', value: 'push代码题量' },
+          { text: '连续打卡天数', value: '连续打卡天数' },
+          { text: '竞赛分数', value: '竞赛分数' }
+        ]"
+        column-key="target_type"
+        :filter-method="filterHandler"
+    />
 	  <el-table-column label="目标值" header-align="center">
 		  <el-table-column label="当前" header-align="center" align="center">
 			  <template #default="scope">
@@ -26,7 +40,7 @@
 				  <div v-if="scope.row.target_type === '总刷题量'">{{ scope.row.target_value }}</div>
 				  <div v-else-if="scope.row.target_type === 'push代码行数'">{{ scope.row.target_value }}</div>
 				  <div v-else-if="scope.row.target_type === 'push代码题量'">{{ scope.row.target_value }}</div>
-				  <div v-else-if="scope.row.target_type === '连续打卡天数'">{{ Number(getDays(scope.row.user)) + Number(moment(scope.row.dead_line).diff(moment(scope.row.create_date), 'day')) }}</div>
+				  <div v-else-if="scope.row.target_type === '连续打卡天数'">{{ Number(moment(scope.row.dead_line).diff(moment(scope.row.create_date), 'day')) }}</div>
 				  <div v-else-if="scope.row.target_type === '竞赛分数'">{{ scope.row.target_value }}</div>
 				  <div v-else>{{ getRate(scope.row.opponent) }}</div>
 			  </template>
@@ -62,6 +76,7 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import { useTable } from '@/stores/table'
 import { storeToRefs } from 'pinia'
 import moment from 'moment'
@@ -107,6 +122,11 @@ const getRate = (name) => {
 			return rankTable.value[i].rating_score
 		}
 	}
+}
+
+const filterHandler = (value, row, column) => {
+  const property = column['property']
+  return row[property] === value
 }
 
 </script>
