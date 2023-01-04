@@ -47,13 +47,13 @@
 
 		<!-- Static sidebar for desktop -->
 		<div class="hidden lg:flex lg:flex-shrink-0">
-			<div class="flex flex-col w-64">
+			<div class="flex flex-col w-48">
 				<!-- Sidebar component, swap this element with another sidebar if you like -->
 				<div class="flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-gray-100">
 					<div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
 						<div class="flex justify-center">
 							<router-link to="/">
-								<span class="text-2xl px-4 py-3 text-gray-600 hover:text-blue-400">LeetCodeHappy</span>
+								<span class="text-xl px-4 py-3 text-gray-600 hover:text-blue-400">LeetCodeHappy</span>
 							</router-link>
 						</div>
 						<nav aria-label="Sidebar" class="mt-5 flex-1">
@@ -93,7 +93,7 @@
 					</div>
 					<!-- End main area -->
 				</main>
-				<aside class="hidden relative xl:flex xl:flex-col flex-shrink-0 w-64 border-l border-gray-200 overflow-y-auto">
+				<aside class="hidden relative xl:flex xl:flex-col flex-shrink-0 w-72 border-l border-gray-200 overflow-y-auto">
 					<right-list></right-list>
 				</aside>
 			</div>
@@ -168,7 +168,6 @@ onMounted(() => {
   getFeedBackList()
   getInterviewType()
   getInterviewTitle()
-
 })
 
 </script>

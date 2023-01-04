@@ -6,8 +6,8 @@
       style="max-width: 279px"
       class="mx-auto"
   >
-    <el-form-item label="目标选择">
-      <el-select v-model="formLabelAlign.value" class="m-2" placeholder="Select">
+    <el-form-item label="目标选择" :required="true">
+      <el-select v-model="formLabelAlign.value" class="m-2" placeholder="请选择目标">
         <el-option
             v-for="item in formLabelAlign.options"
             :key="item.value"
@@ -16,7 +16,7 @@
         />
       </el-select>
     </el-form-item>
-    <el-form-item label="绑定账号">
+    <el-form-item label="绑定账号" :required="true">
 	    <el-autocomplete
 			    v-model="formLabelAlign.leetcode"
 			    placeholder="请输入LeetCode账号"
@@ -26,7 +26,7 @@
 			    @select="handleSelect"
 	    />
     </el-form-item>
-    <el-form-item :label="formLabelAlign.value === '挑战PK' ? 'PK目标' : '目标值'">
+    <el-form-item :label="formLabelAlign.value === '挑战PK' ? 'PK目标' : '目标值'" :required="true">
       <el-autocomplete
 		      v-model="formLabelAlign.num"
 		      :placeholder="formLabelAlign.value === '挑战PK' ? '请输入PK目标账号' : '请输入目标值'"
@@ -44,7 +44,7 @@
 			    v-else
 	    />
     </el-form-item>
-    <el-form-item label="完成日期">
+    <el-form-item label="完成日期" :required="true">
       <el-date-picker
           v-model="formLabelAlign.datepicker"
           type="date"
@@ -60,7 +60,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
 import { storeToRefs } from 'pinia'
 
 // 目标表单提交

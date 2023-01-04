@@ -12,6 +12,7 @@
     <el-table-column
         prop="target_type"
         label="目标类型"
+        min-width="130"
         header-align="center"
         align="center"
         :filters="[
@@ -19,7 +20,8 @@
           { text: 'push代码行数', value: 'push代码行数' },
           { text: 'push代码题量', value: 'push代码题量' },
           { text: '连续打卡天数', value: '连续打卡天数' },
-          { text: '竞赛分数', value: '竞赛分数' }
+          { text: '竞赛分数', value: '竞赛分数' },
+          { text: '挑战PK', value: '挑战PK' }
         ]"
         column-key="target_type"
         :filter-method="filterHandler"
@@ -52,12 +54,12 @@
 	      <el-link v-else type="primary" :underline="false" :href="'https://leetcode.cn/u/' + scope.row.user" target="_blank">{{ scope.row.user }}</el-link>
       </template>
     </el-table-column>
-	  <el-table-column prop="level" label="难易程度" min-width="135" header-align="center" align="center">
+	  <el-table-column prop="level" label="难易程度" min-width="130" header-align="center" align="center">
 		  <template #default="scope">
 			  <el-tag :type="scope.row.level === 'VERY_EASY' || scope.row.level === 'EASY' ? 'success' : (scope.row.level === 'MID' ? '' : (scope.row.level === 'LITTLE_HARD' || scope.row.level === 'VERY_HARD' ? 'warning' : 'danger'))" :underline="false">{{ scope.row.level }}</el-tag>
 		  </template>
 	  </el-table-column>
-    <el-table-column prop="status" label="状态" min-width="135" header-align="center" align="center">
+    <el-table-column prop="status" label="状态" min-width="100" header-align="center" align="center">
       <template #default="scope">
         <el-tag effect="dark" :type="scope.row.status === '已完成' ? 'success' : (scope.row.status === '进行中' ? 'warning' : 'danger')" :underline="false">{{ scope.row.status }}</el-tag>
       </template>

@@ -55,8 +55,9 @@ export const useTargetForm = defineStore('target_form', () => {
 	}
 
 	const submitTarget = () => {
-		if (formLabelAlign.leetcode === '') {
-			alert('LeetCode账户不能为空!')
+
+		if (formLabelAlign.leetcode === '' || formLabelAlign.value === '') {
+			alert('提交信息不能为空!')
 			return
 		}
 
@@ -64,6 +65,7 @@ export const useTargetForm = defineStore('target_form', () => {
 			alert('日期填写错误!')
 			return
 		}
+		console.log('formLabelAlign.value:',formLabelAlign.value)
 
 		submitTargetInfo()
 	}
