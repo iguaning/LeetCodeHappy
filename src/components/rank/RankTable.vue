@@ -17,6 +17,11 @@
 				</div>
 			</template>
 		</el-table-column>
+    <el-table-column prop="honer_level" label="英雄称号" min-width="100" header-align="center" align="center">
+      <template #default="scope">
+				<el-tag type="" effect="light">{{ scope.row.honer_level }}</el-tag>
+			</template>
+    </el-table-column>
 		<el-table-column prop="coins" label="能量值" header-align="center" align="center" :sortable="true" :sort-method="(a, b)=>{ return a.coins - b.coins }">
 			<template #default="scope">
 				<div>{{ scope.row.coins }}</div>
