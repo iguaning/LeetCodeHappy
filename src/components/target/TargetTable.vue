@@ -42,7 +42,7 @@
 				  <div v-if="scope.row.target_type === '总刷题量'">{{ scope.row.target_value }}</div>
 				  <div v-else-if="scope.row.target_type === 'push代码行数'">{{ scope.row.target_value }}</div>
 				  <div v-else-if="scope.row.target_type === 'push代码题量'">{{ scope.row.target_value }}</div>
-				  <div v-else-if="scope.row.target_type === '连续打卡天数'">{{ Number(moment(scope.row.dead_line).diff(moment(scope.row.create_date), 'day')) }}</div>
+				  <div v-else-if="scope.row.target_type === '连续打卡天数'">{{ scope.row.target_value }}</div>
 				  <div v-else-if="scope.row.target_type === '竞赛分数'">{{ scope.row.target_value }}</div>
 				  <div v-else>{{ getRate(scope.row.opponent) }}</div>
 			  </template>
@@ -78,7 +78,6 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import { useTable } from '@/stores/table'
 import { storeToRefs } from 'pinia'
 import moment from 'moment'
@@ -130,5 +129,4 @@ const filterHandler = (value, row, column) => {
   const property = column['property']
   return row[property] === value
 }
-
 </script>

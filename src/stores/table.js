@@ -8,8 +8,9 @@ export const useTable = defineStore('table', () => {
 	let targetTable = ref([])
 
 	const getRankTable = () => {
-    UserService.getTable().then((res) => {
-	    rankTable.value = res.data
+    	UserService.getTable().then((res) => {
+	    	rankTable.value = res.data
+			console.log(rankTable.value)
 		})
 	}
 
@@ -20,6 +21,7 @@ export const useTable = defineStore('table', () => {
 		}
 	  UserService.getTarget(params).then((res) => {
 		  targetTable.value = res.data
+		  console.log(targetTable.value)
 		})
 	}
 

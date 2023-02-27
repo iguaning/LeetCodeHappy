@@ -28,13 +28,15 @@
 			</template>
 		</el-table-column>
 		<el-table-column prop="total_solve" label="总刷题量" header-align="center" align="center" :sortable="true" :sort-method="(a, b)=>{ return a.total_solve - b.total_solve }" />
-		<el-table-column label="代码贡献" header-align="center">
-			<el-table-column prop="code_submit" label="行数贡献" header-align="center" align="center" :sortable="true" :sort-method="(a, b)=>{ return a.code_submit - b.code_submit }" />
-			<el-table-column prop="problem_submit" label="题量贡献" header-align="center" align="center" :sortable="true" :sort-method="(a, b)=>{ return a.problem_submit - b.problem_submit }" />
-		</el-table-column>
 		<el-table-column prop="rating_score" label="竞赛分数" header-align="center" align="center" :sortable="true" :sort-method="(a, b)=>{ return a.rating_score - b.rating_score }" />
 		<el-table-column prop="continue_days" label="连续打卡天数" header-align="center" align="center" :sortable="true" :sort-method="(a,b)=>{ return a.continue_days - b.continue_days }" />
-		<el-table-column prop="new_solve" label="今日刷题数量" header-align="center" align="center" :sortable="true" :sort-method="(a, b)=>{ return a.new_solve - b.new_solve }">
+    <el-table-column prop="total_days" label="累计打卡天数" header-align="center" align="center" :sortable="true" :sort-method="(a,b)=>{ return a.total_days - b.total_days }" />
+    <el-table-column label="今日刷题数量" header-align="center">
+			<el-table-column prop="easy_num" label="EASY" header-align="center" align="center" :sortable="true" :sort-method="(a, b)=>{ return a.code_submit - b.code_submit }" />
+			<el-table-column prop="mid_num" label="MID" header-align="center" align="center" :sortable="true" :sort-method="(a, b)=>{ return a.problem_submit - b.problem_submit }" />
+      <el-table-column prop="hard_num" label="HARD" header-align="center" align="center" :sortable="true" :sort-method="(a, b)=>{ return a.problem_submit - b.problem_submit }" />
+		</el-table-column>
+		<el-table-column prop="new_solve" label="今日刷题得分" header-align="center" align="center" :sortable="true" :sort-method="(a, b)=>{ return a.new_solve - b.new_solve }">
 			<template #default="scope">
 				<div class="text-red-400 hover:text-red-300">{{ scope.row.new_solve }}</div>
 			</template>
@@ -52,7 +54,6 @@ import { computed } from 'vue'
 import { MagnifyingGlassIcon } from '@heroicons/vue/24/solid'
 import { useTable } from '@/stores/table'
 import { storeToRefs } from 'pinia'
-import _ from 'lodash'
 
 const tableStore = useTable()
 const { rankTable, searchContent } = storeToRefs(tableStore)
